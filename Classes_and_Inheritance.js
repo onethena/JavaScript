@@ -63,7 +63,6 @@ function ParentClass(length, breadth, height)
     this.breadth = breadth;
     this.height = height;
 };
-
 ParentClass.prototype.getArea = function()
 {
     return this.length*this.breadth;
@@ -76,6 +75,6 @@ function ChildClass(side) {
     ParentClass.call(this, side, side, side);
 };
 ChildClass.prototype = Object.create(ParentClass.prototype);
-//ChildClass.prototype.constructor = ParentClass;
+ChildClass.prototype.constructor = ParentClass;
 const o = new ChildClass(5);
 console.log(o.getArea());

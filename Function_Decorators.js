@@ -40,6 +40,5 @@ ParentClass.prototype.getName = decoratorFunction(function()
 {
     return this.name;
 });
-
 const o = new ParentClass();
 console.log(o.setName("Vandana").getName().setName("ABC").getName());
