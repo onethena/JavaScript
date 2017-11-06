@@ -83,3 +83,36 @@ var myObject = {
     }
 };
 myObject.func();
+
+
+function* randomNumber()
+{
+    yield Math.floor(Math.random()*10 + 1);
+}
+// console.log(randomNumber().next());
+// console.log(randomNumber().next());
+
+
+//hoisting is not applicable in case of let
+//block scope
+var myFunction = function()
+{
+    if(true)
+    {
+        var x = 10;
+        let y = 20;
+    }
+    //console.log(x,y);   //y is  not defined
+}
+myFunction();
+
+let map = new Map();
+map.set("1", "One");
+map.set("2", "Two");
+map.forEach(function(value, key){/*console.log(value, key)*/});
+// console.log(map.get("One"));  //undefined
+// console.log(map.get("2"));
+for(var[key,value] of map.entries())
+{
+   // console.log(key, value);
+}

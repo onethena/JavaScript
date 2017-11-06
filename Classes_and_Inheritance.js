@@ -56,35 +56,26 @@ var square = new Square(5);
 // console.log(square.getArea());
 
 
-function* randomNumber()
+//Inheritance in ES5
+function ParentClass(length, breadth, height) 
 {
-    yield Math.floor(Math.random()*10 + 1);
-}
-// console.log(randomNumber().next());
-// console.log(randomNumber().next());
+    this.length = length;
+    this.breadth = breadth;
+    this.height = height;
+};
 
-
-//hoisting is not applicable in case of let
-//block scope
-var myFunction = function()
+ParentClass.prototype.getArea = function()
 {
-    if(true)
-    {
-        var x = 10;
-        let y = 20;
-    }
-    //console.log(x,y);   //y is  not defined
-}
-myFunction();
-
-
-let map = new Map();
-map.set("1", "One");
-map.set("2", "Two");
-map.forEach(function(value, key){/*console.log(value, key)*/});
-// console.log(map.get("One"));  //undefined
-// console.log(map.get("2"));
-for(var[key,value] of map.entries())
+    return this.length*this.breadth;
+};
+ParentClass.prototype.getVolume = function()
 {
-   // console.log(key, value);
-}
+    return this.length*this.breadth*this.height;
+};
+function ChildClass(side) {
+    ParentClass.call(this, side, side, side);
+};
+ChildClass.prototype = Object.create(ParentClass.prototype);
+//ChildClass.prototype.constructor = ParentClass;
+const o = new ChildClass(5);
+console.log(o.getArea());
