@@ -65,5 +65,12 @@ var isTrue = myArray.some(function(value)
 
 myArray.forEach(function (value)
 {
-    console.log(++value);
+   //console.log(++value);
 });
+
+newArray = myArray.filter(function(value)
+{
+    return value > 0;
+});
+
+console.log(newArray);
