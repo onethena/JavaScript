@@ -1,5 +1,6 @@
 //"use strict"
 
+/** let keyword */
 //myVar = "Hello, World";  // use strict doesn't allow this
 //var num  = "global";
 let num = "global";
@@ -13,6 +14,8 @@ var test = function()
 test();
 
 
+
+/** Variable Hoisting */
 var variableHoisting = function()
 {
     //var y; //Hoisted to function scope like this
@@ -22,14 +25,28 @@ var variableHoisting = function()
     //console.log("Outside for loop", y);
 };
 variableHoisting();
+//hoisting is not applicable in case of let
+//block scope
+var myFunction = function()
+{
+    if(true)
+    {
+        var x = 10;
+        let y = 20;
+    }
+    //console.log(x,y);   //y is  not defined
+}
+myFunction();
 
 
+
+/** typeof */
 var obj = {};
 var obj1 = new Object();
 var obj2 = [1, 2, 3];
 //console.log(typeof(10), typeof("Hi"), typeof(true), typeof(obj), typeof(obj2));
 
-
+/** Rest parameters */
 var a = 1;
 var b = 0;
 //console.log(a|b, a&b, ~a);  //TODO
@@ -40,9 +57,11 @@ var restParams = function(...params)
 restParams(1, 2);
 restParams(3, 4, 5, 6);
 
-
+/** Function constructor */
 var constructedFunction = new Function("x", "y", "return x + y;");
 //console.log(constructedFunction(10, 13));
+
+
 
 (function()
 {
@@ -50,6 +69,8 @@ var constructedFunction = new Function("x", "y", "return x + y;");
 })();
 
 
+
+/** Promise */
 var fs = require('fs');
 function readFilePromisified()
 {
@@ -69,6 +90,9 @@ function readFilePromisified()
 };
 //readFilePromisified().then((data) => {console.log(data)}).catch((err)=>{console.log(err)});
 
+
+
+/** Binding */
 var myObject = {
     foo: "bar",
     func: function() {
@@ -85,34 +109,11 @@ var myObject = {
 myObject.func();
 
 
+
+/** Function generator */
 function* randomNumber()
 {
     yield Math.floor(Math.random()*10 + 1);
 }
 // console.log(randomNumber().next());
 // console.log(randomNumber().next());
-
-
-//hoisting is not applicable in case of let
-//block scope
-var myFunction = function()
-{
-    if(true)
-    {
-        var x = 10;
-        let y = 20;
-    }
-    //console.log(x,y);   //y is  not defined
-}
-myFunction();
-
-let map = new Map();
-map.set("1", "One");
-map.set("2", "Two");
-map.forEach(function(value, key){/*console.log(value, key)*/});
-// console.log(map.get("One"));  //undefined
-// console.log(map.get("2"));
-for(var[key,value] of map.entries())
-{
-   // console.log(key, value);
-}
