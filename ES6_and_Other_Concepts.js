@@ -62,7 +62,7 @@ var constructedFunction = new Function("x", "y", "return x + y;");
 //console.log(constructedFunction(10, 13));
 
 
-
+// IIFE - Immediately invoked function expression
 (function()
 {
     //console.log("I am calling myself");
